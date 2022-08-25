@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, FlatList, ListRenderItem } from 'react-native';
 import { useCallback } from 'react';
 
+
 type arrayDataType = {
     id: number
     title: string
@@ -13,6 +14,7 @@ const arrayData: arrayDataType[] = new Array(100)
     id: index + 1,
     title: `Title_${index + 1}`,
 } ))
+
 
 export default function App() {
 
