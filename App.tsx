@@ -28,6 +28,7 @@ export default function App() {
 
     const keyExtractor = useCallback((item, index) => `${item.title}.${index}`, []);
 
+
     return (
        <View style={styles.container}>
            <Text>dfbfdbfdb</Text>
