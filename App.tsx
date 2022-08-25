@@ -3,13 +3,13 @@ import {
     ActivityIndicator,
     Alert,
     Button,
+    Image,
+    Keyboard,
     StyleSheet,
     Text,
-    View,
-    Image,
     TextInput,
     TouchableWithoutFeedback,
-    TouchableOpacity,
+    View,
 } from 'react-native';
 import { useState } from 'react';
 
@@ -19,12 +19,13 @@ export default function App() {
 
 
     return (
-       <View style={styles.container}>
-           <TouchableOpacity
-              style={{ flex: 1 }}
-              onPress={() => {
-              }}
-           >
+       <TouchableWithoutFeedback
+          style={{ flex: 1 }}
+          onPress={() => {
+              Keyboard.dismiss()
+          }}
+       >
+           <View style={styles.container}>
                <View>
                    <Text>Open up App.tsx to start working on your app!</Text>
                    <ActivityIndicator />
@@ -46,9 +47,9 @@ export default function App() {
                       onChangeText={setValue}
                    />
                </View>
-           </TouchableOpacity>
-           <StatusBar style="auto" />
-       </View>
+               <StatusBar style="auto" />
+           </View>
+       </TouchableWithoutFeedback>
     );
 }
 
