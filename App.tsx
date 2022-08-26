@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, FlatList, ListRenderItem } from 'react-native';
+import { StyleSheet, Text, View, FlatList, ListRenderItem, Dimensions } from 'react-native';
 import { useCallback } from 'react';
 
 
@@ -8,6 +8,11 @@ type arrayDataType = {
     title: string
     count: number
 }
+
+const { width, height } = Dimensions.get('screen');
+const WIDTH = width;
+const HEIGHT = height;
+const PADDING = 10;
 
 const arrayData: arrayDataType[] = new Array(100)
    .fill(null)
@@ -36,8 +41,8 @@ export default function App() {
            <FlatList
               data={arrayData}
               numColumns={3}
-              columnWrapperStyle={{justifyContent: 'space-between'}}
-              contentContainerStyle={{paddingHorizontal: 15}}
+              columnWrapperStyle={{ justifyContent: 'space-between' }}
+              contentContainerStyle={{ paddingHorizontal: PADDING }}
               renderItem={renderItem} /* Берет элемент из data и отображает его в списке */
               keyExtractor={keyExtractor} /* Вместо key */
            >
@@ -55,7 +60,10 @@ const styles = StyleSheet.create({
         marginTop: 50,
     },
     item: {
-
+        width: ( WIDTH - PADDING * 2 ) / 3 - ( PADDING / 2 ),
+        height: ( WIDTH - PADDING * 2 ) / 3 - ( PADDING / 2 ),
+        backgroundColor: '#c3ffc4',
+        marginVertical: PADDING / 2,
     },
     title: {
         fontSize: 20,
@@ -66,5 +74,6 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: '500',
         color: '#ffa9a9',
+        backgroundColor: '#fff7b7',
     },
 });
