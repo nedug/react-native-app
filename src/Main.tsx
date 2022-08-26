@@ -30,7 +30,7 @@ export const Main = () => {
         },
     ]);
 
-    const renderItem: ListRenderItem<TaskType> = useCallback(({ item, index, separators }) => (
+    const renderItem: ListRenderItem<TaskType> = useCallback(({ item }) => (
        <View style={styles.item}>
            <Text style={styles.title}>{item.title}</Text>
            <Text style={styles.check}>{item.isDone ? 'true' : 'false'}</Text>
