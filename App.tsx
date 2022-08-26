@@ -20,19 +20,19 @@ const arrayData: arrayDataType[] = new Array(100)
        id: index + 1,
        title: `Title_${index + 1}`,
        count: ( index + 1 ) * 5,
-   } ))
+   } ));
 
 
 export default function App() {
 
-    const renderItem: ListRenderItem<arrayDataType> = useCallback(({ item }) => (
+    const renderItem: ListRenderItem<arrayDataType> = useCallback(({ item, index, separators }) => (
        <View style={styles.item}>
            <Text style={styles.title}>{item.title}</Text>
            <Text style={styles.price}>{item.count} $</Text>
        </View>
     ), []);
 
-    const keyExtractor = useCallback((item, index) => `${item.title}.${index}`, []);
+    const keyExtractor = useCallback((item: arrayDataType, index: number) => `${item.title}.${index}`, []);
 
 
     return (
