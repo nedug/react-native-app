@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from 'react';
-import { FlatList, ListRenderItem, Text, View } from 'react-native';
+import { FlatList, ListRenderItem, StyleSheet, Text, View } from 'react-native';
+import { PADDING, WIDTH } from './const';
 
 
 type TaskType = {
@@ -7,6 +8,7 @@ type TaskType = {
     title: string
     isDone: boolean
 }
+
 
 export const Main = () => {
 
@@ -29,7 +31,7 @@ export const Main = () => {
     ]);
 
     const renderItem: ListRenderItem<TaskType> = useCallback(({ item, index, separators }) => (
-       <View>
+       <View style={styles.item}>
            <Text>{item.title}</Text>
            <Text>{item.isDone ? 'true' : 'false'}</Text>
        </View>
@@ -47,3 +49,13 @@ export const Main = () => {
        </View>
     );
 };
+
+
+const styles = StyleSheet.create({
+    item: {
+        width: WIDTH - ( PADDING * 2 ),
+        // height: ( WIDTH - PADDING * 2 ) / 3 - ( PADDING / 2 ),
+        backgroundColor: '#c3ffc4',
+        // marginVertical: PADDING / 2,
+    },
+});

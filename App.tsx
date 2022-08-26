@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View } from 'react-native';
+import { Dimensions, StyleSheet, View } from 'react-native';
 import { Main } from './src/Main';
+import { PADDING } from './src/const';
 
 
 export default function App() {
@@ -16,7 +17,7 @@ export default function App() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
+        marginTop: 50,
+        paddingHorizontal: PADDING,
     },
 });
