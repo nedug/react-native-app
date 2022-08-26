@@ -42,6 +42,7 @@ export const Main = () => {
            <FlatList
               data={tasks}
               renderItem={renderItem}
+              keyExtractor={item => item.id.toString() }
               />
        </View>
     );
