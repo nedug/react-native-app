@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Text, View } from 'react-native';
+import React, { useCallback, useState } from 'react';
+import { FlatList, ListRenderItem, Text, View } from 'react-native';
 
 
 type TaskType = {
@@ -28,10 +28,21 @@ export const Main = () => {
         },
     ]);
 
+    const renderItem: ListRenderItem<TaskType> = useCallback(({ item, index, separators }) => (
+       <View>
+           <Text>{item.title}</Text>
+           <Text>{item.isDone ? 'true' : 'false'}</Text>
+       </View>
+    ), []);
+
 
     return (
        <View>
            <Text>App!!!</Text>
+           <FlatList
+              data={tasks}
+              renderItem={renderItem}
+              />
        </View>
     );
 };
