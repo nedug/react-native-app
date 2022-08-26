@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react';
-import { FlatList, ListRenderItem, StyleSheet, Text, View } from 'react-native';
+import { FlatList, ListRenderItem, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { CARD, CONTENT, PADDING, TEXT, WIDTH } from './const';
 
 
@@ -40,7 +40,12 @@ export const Main = () => {
 
     return (
        <View>
-           <Text>App!!!</Text>
+           <View style={styles.inputBox}>
+               <TextInput style={styles.input}/>
+               <TouchableOpacity>
+                   <Text style={styles.inputText}>Add</Text>
+               </TouchableOpacity>
+           </View>
            <FlatList
               data={tasks}
               renderItem={renderItem}
@@ -52,6 +57,26 @@ export const Main = () => {
 
 
 const styles = StyleSheet.create({
+    inputBox: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginVertical: 10,
+    },
+    input: {
+        height:36,
+        width: WIDTH - ( PADDING * 2 ) - 50,
+        borderColor: 'white',
+        borderWidth: 1,
+        borderRadius: PADDING / 4,
+        color: 'white',
+        paddingHorizontal: 5
+    },
+    inputText: {
+        color: 'white',
+        marginRight: 10,
+        fontSize: 17,
+    },
     item: {
         width: WIDTH - ( PADDING * 2 ),
         backgroundColor: CARD,
