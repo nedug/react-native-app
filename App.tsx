@@ -11,9 +11,9 @@ type arrayDataType = {
 const arrayData: arrayDataType[] = new Array(100)
    .fill(null)
    .map((_, index) => ( {
-    id: index + 1,
-    title: `Title_${index + 1}`,
-} ))
+       id: index + 1,
+       title: `Title_${index + 1}`,
+   } ))
 
 
 export default function App() {
@@ -34,8 +34,8 @@ export default function App() {
            <Text>dfbfdbfdb</Text>
            <FlatList
               data={arrayData}
-              renderItem={renderItem}
-              keyExtractor={keyExtractor}
+              renderItem={renderItem} /* Берет элемент из data и отображает его в списке */
+              keyExtractor={keyExtractor} /* Вместо key */
            >
            </FlatList>
            <StatusBar style="auto" />
