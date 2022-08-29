@@ -62,7 +62,7 @@ export const Main = () => {
     };
 
     const updateTask = (id: number) => {
-        setTasks(tasks.map(t => t.id === id ? {...t, isDone: !t.isDone} : t));
+        setTasks(tasks.map(t => t.id === id ? { ...t, isDone: !t.isDone } : t));
     };
 
 
