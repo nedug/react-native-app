@@ -36,7 +36,7 @@ export const Main = () => {
        <View style={styles.item}>
            <View style={styles.box}>
                <Text style={styles.title}>{item.title}</Text>
-               
+
                {/*<Text style={styles.remove} onPress={() => removeTask(item.id)}>Х</Text>*/}
 
                <Pressable onPress={() => removeTask(item.id)}>
