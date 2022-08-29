@@ -2,6 +2,7 @@ import React, { useCallback, useState } from 'react';
 import { FlatList, ListRenderItem, StyleSheet, Text, TextInput, TouchableOpacity, View, Pressable } from 'react-native';
 import { CARD, CONTENT, PADDING, TEXT, WIDTH } from './const';
 import { Remove } from './svg/Remove';
+import Swipeable from 'react-native-gesture-handler/Swipeable';
 
 
 type TaskType = {
@@ -33,22 +34,28 @@ export const Main = () => {
     const [value, setValue] = useState('');
 
     const renderItem: ListRenderItem<TaskType> = useCallback(({ item }) => (
-       <View style={styles.item}>
-           <View style={styles.box}>
-               <Text style={styles.title}>{item.title}</Text>
+       <Swipeable
+          renderLeftActions={renderLeftActions}
+          renderRightActions={renderRightActions}
+          onSwipeableRightOpen={() => removeTask(item.id)}
+       >
+           <View style={styles.item}>
+               <View style={styles.box}>
+                   <Text style={styles.title}>{item.title}</Text>
 
-               {/*<Text style={styles.remove} onPress={() => removeTask(item.id)}>Х</Text>*/}
+                   {/*<Text style={styles.remove} onPress={() => removeTask(item.id)}>Х</Text>*/}
 
-               <Pressable onPress={() => removeTask(item.id)}>
-                   <Remove />
-               </Pressable>
+                   <Pressable onPress={() => removeTask(item.id)}>
+                       <Remove />
+                   </Pressable>
 
+               </View>
+               <Text
+                  style={styles.check}
+                  onPress={() => updateTask(item.id)}
+               >{item.isDone ? 'true' : 'false'}</Text>
            </View>
-           <Text
-              style={styles.check}
-              onPress={() => updateTask(item.id)}
-           >{item.isDone ? 'true' : 'false'}</Text>
-       </View>
+       </Swipeable>
     ), [tasks]);
 
     const addTask = () => {
@@ -68,6 +75,9 @@ export const Main = () => {
     const updateTask = (id: number) => {
         setTasks(tasks.map(t => t.id === id ? { ...t, isDone: !t.isDone } : t));
     };
+
+    const renderLeftActions = () => <View><Text style={{color: 'white'}}>renderLeftActions</Text></View>;
+    const renderRightActions = () => <View><Text style={{color: 'white'}}>renderRightActions</Text></View>;
 
 
     return (
