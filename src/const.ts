@@ -5,7 +5,7 @@ const { width, height } = Dimensions.get('screen');
 
 export const WIDTH = width;
 export const HEIGHT = height;
-export const PADDING = 20;
+export const PADDING = 15;
 
 // colors
 export const BODY = '#0A0A0B';

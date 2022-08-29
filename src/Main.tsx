@@ -98,7 +98,8 @@ const styles = StyleSheet.create({
         width: WIDTH - ( PADDING * 2 ),
         backgroundColor: CARD,
         marginVertical: PADDING / 2,
-        padding: PADDING / 3,
+        paddingVertical: PADDING / 3,
+        paddingHorizontal: PADDING,
         borderRadius: PADDING / 4,
     },
     title: {
