@@ -40,13 +40,16 @@ export const Main = () => {
                   onPress={() => removeTask(item.id)}
                >Х</Text>
            </View>
-           <Text style={styles.check}>{item.isDone ? 'true' : 'false'}</Text>
+           <Text
+              style={styles.check}
+              onPress={() => updateTask(item.id)}
+           >{item.isDone ? 'true' : 'false'}</Text>
        </View>
     ), [tasks]);
 
     const addTask = () => {
         const newTask: TaskType = {
-            id: tasks.length + 1,
+            id: +new Date(),
             title: value,
             isDone: false,
         };
@@ -56,6 +59,10 @@ export const Main = () => {
 
     const removeTask = (id: number) => {
         setTasks(tasks.filter(t => t.id !== id));
+    };
+
+    const updateTask = (id: number) => {
+        setTasks(tasks.map(t => t.id === id ? {...t, isDone: !t.isDone} : t));
     };
 
 
