@@ -9,6 +9,6 @@ export const PADDING = 15;
 
 // colors
 export const BODY = '#0A0A0B';
-export const CARD = '#252939';
-export const CONTENT = '#215BF8';
+export const CARD = '#3f455e';
+export const CONTENT = '#4074ff';
 export const TEXT = '#fff';

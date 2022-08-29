@@ -33,10 +33,16 @@ export const Main = () => {
 
     const renderItem: ListRenderItem<TaskType> = useCallback(({ item }) => (
        <View style={styles.item}>
-           <Text style={styles.title}>{item.title}</Text>
+           <View style={styles.box}>
+               <Text style={styles.title}>{item.title}</Text>
+               <Text
+                  style={styles.remove}
+                  onPress={() => removeTask(item.id)}
+               >Х</Text>
+           </View>
            <Text style={styles.check}>{item.isDone ? 'true' : 'false'}</Text>
        </View>
-    ), []);
+    ), [tasks]);
 
     const addTask = () => {
         const newTask: TaskType = {
@@ -46,6 +52,10 @@ export const Main = () => {
         };
         setTasks([newTask, ...tasks]);
         setValue('');
+    };
+
+    const removeTask = (id: number) => {
+        setTasks(tasks.filter(t => t.id !== id));
     };
 
 
@@ -63,6 +73,7 @@ export const Main = () => {
                    <Text style={styles.inputText}>Add</Text>
                </TouchableOpacity>
            </View>
+
            <FlatList
               data={tasks}
               renderItem={renderItem}
@@ -79,6 +90,14 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         marginVertical: 10,
+    },
+    box: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+    },
+    remove: {
+        color: 'white',
     },
     input: {
         height: 36,
@@ -100,7 +119,7 @@ const styles = StyleSheet.create({
         marginVertical: PADDING / 2,
         paddingVertical: PADDING / 3,
         paddingHorizontal: PADDING,
-        borderRadius: PADDING / 4,
+        borderRadius: PADDING / 3,
     },
     title: {
         fontSize: 16,
