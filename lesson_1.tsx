@@ -26,7 +26,7 @@ const arrayData: arrayDataType[] = new Array(100)
 export default function App() {
 
     const renderItem: ListRenderItem<arrayDataType> = useCallback(({ item, index, separators }) => (
-       <View style={[styles.item, { backgroundColor: index % 2 ? '#c3ffc4' : '#c3fdff'}]}>
+       <View style={[styles.item, { backgroundColor: index % 2 ? '#c3ffc4' : '#c3fdff' }]}>
            <Text style={styles.title}>{item.title}</Text>
            <Text style={styles.price}>{item.count} $</Text>
        </View>
