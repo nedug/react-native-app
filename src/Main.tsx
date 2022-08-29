@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from 'react';
-import { FlatList, ListRenderItem, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { FlatList, ListRenderItem, StyleSheet, Text, TextInput, TouchableOpacity, View, Pressable } from 'react-native';
 import { CARD, CONTENT, PADDING, TEXT, WIDTH } from './const';
+import { Remove } from './svg/Remove';
 
 
 type TaskType = {
@@ -35,10 +36,16 @@ export const Main = () => {
        <View style={styles.item}>
            <View style={styles.box}>
                <Text style={styles.title}>{item.title}</Text>
-               <Text
-                  style={styles.remove}
-                  onPress={() => removeTask(item.id)}
-               >Х</Text>
+               {/*<Text*/}
+               {/*   style={styles.remove}*/}
+               {/*   onPress={() => removeTask(item.id)}*/}
+               {/*>Х</Text>*/}
+
+               <Pressable onPress={() => removeTask(item.id)}>
+                   <Remove />
+               </Pressable>
+
+
            </View>
            <Text
               style={styles.check}
