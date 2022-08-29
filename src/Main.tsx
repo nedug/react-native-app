@@ -29,6 +29,7 @@ export const Main = () => {
             isDone: false,
         },
     ]);
+    const [value, setValue] = useState('');
 
     const renderItem: ListRenderItem<TaskType> = useCallback(({ item }) => (
        <View style={styles.item}>
@@ -37,12 +38,28 @@ export const Main = () => {
        </View>
     ), []);
 
+    const addTask = () => {
+        const newTask: TaskType = {
+            id: tasks.length + 1,
+            title: value,
+            isDone: false,
+        };
+        setTasks([newTask, ...tasks]);
+        setValue('');
+    };
+
 
     return (
        <View>
            <View style={styles.inputBox}>
-               <TextInput style={styles.input} />
-               <TouchableOpacity>
+               <TextInput
+                  style={styles.input}
+                  value={value}
+                  onChangeText={setValue}
+               />
+               <TouchableOpacity
+                  onPress={addTask}
+               >
                    <Text style={styles.inputText}>Add</Text>
                </TouchableOpacity>
            </View>
