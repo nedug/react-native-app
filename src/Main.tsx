@@ -41,7 +41,7 @@ export const Main = () => {
     return (
        <View>
            <View style={styles.inputBox}>
-               <TextInput style={styles.input}/>
+               <TextInput style={styles.input} />
                <TouchableOpacity>
                    <Text style={styles.inputText}>Add</Text>
                </TouchableOpacity>
@@ -64,13 +64,13 @@ const styles = StyleSheet.create({
         marginVertical: 10,
     },
     input: {
-        height:36,
+        height: 36,
         width: WIDTH - ( PADDING * 2 ) - 50,
         borderColor: 'white',
         borderWidth: 1,
         borderRadius: PADDING / 4,
         color: 'white',
-        paddingHorizontal: 5
+        paddingHorizontal: 5,
     },
     inputText: {
         color: 'white',
