@@ -155,6 +155,3 @@ const styles = StyleSheet.create({
         lineHeight: 28,
     },
 });
-
-// code for test Git
-// code for test Git
